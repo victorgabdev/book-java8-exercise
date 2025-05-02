@@ -1,6 +1,8 @@
 package main;
 
 
+import entidade.Usuario;
+
 import java.util.Arrays;
 import java.util.List;
 

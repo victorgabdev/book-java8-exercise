@@ -1,6 +1,6 @@
-package main;
+package entidade;
 
-class Usuario {
+public class Usuario {
 
     // Atributos
     private String nome;
