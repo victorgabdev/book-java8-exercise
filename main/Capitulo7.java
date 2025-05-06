@@ -40,16 +40,28 @@ public class Capitulo7 {
 
         // filtrar todos os usuários que têm mais de 100 pontos
         //Maneira Antiga
-        for (Usuario usuario : usuarios) {
-            if(usuario.getPontos() > 100) usuario.tornaModerador();
-        }
+        //for (Usuario usuario : usuarios) {
+            //if(usuario.getPontos() > 100) usuario.tornaModerador();
+        //}
+
+        // Transformando os 10 usuarios com mais pontos moderadores
+        //usuarios.sort(Comparator.comparingInt(Usuario::getPontos).reversed());  // ordenando a lista usuario por pontos de forma decrescente
+        //suarios.subList(0, 10).forEach(Usuario::tornaModerador);  // Lista usuarios ordenado de forma decrescente por pontos, pega somente 10 usuarios e torna moderador
+
+        // Filtrar todos usuarios que tem mais de 100 pontos
+        // maneira antiga
+        //for(Usuario usuario : usuarios) {
+            //if (usuario.getPontos() > 100) usuario.tornaModerador();
+        //}
 
         usuarios.stream()
-                .filter(usuario -> usuario.getPontos() > 100)  // filtro todos os usuarios que tem mais de 100 pontos
-                .forEach(Usuario::tornaModerador);  // transformo em moderadores
+                .filter(usuario -> usuario.getPontos() > 100)
+                .forEach(Usuario::tornaModerador);  // method reference
 
-
-
+        // filtrar os usuarios que sao moderadores
+        usuarios.stream()
+                .filter(Usuario::isModerador)
+                .forEach(System.out::println);
 
 
     }
