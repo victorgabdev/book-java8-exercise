@@ -2,10 +2,9 @@ package main;
 
 import entidade.Usuario;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Capitulo7 {
@@ -59,9 +58,35 @@ public class Capitulo7 {
                 .forEach(Usuario::tornaModerador);  // method reference
 
         // filtrar os usuarios que sao moderadores
-        usuarios.stream()
-                .filter(Usuario::isModerador)
-                .forEach(System.out::println);
+        //usuarios.stream()
+                //.filter(Usuario::isModerador)
+                //.forEach(System.out::println);
+
+        //List<Usuario> maisQue100 = usuarios
+                //.stream()
+                //.filter(u -> u.getPontos() > 100)
+                //.collect(Collectors.toList());
+
+        /*
+        List<Integer> pontos = usuarios
+                .stream()
+                .map(Usuario::getPontos)
+                .collect(Collectors.toList());
+
+
+
+        IntStream stream = usuarios.stream()
+                .mapToInt(Usuario::getPontos);
+
+         */
+
+        OptionalDouble media = usuarios
+                .stream()
+                .mapToInt(Usuario::getPontos)  // IntStream
+                .average();
+
+        double pontuacaoMedia = media.orElse(0.0);
+
 
 
     }
